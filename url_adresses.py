@@ -1,4 +1,5 @@
-registration_page = 'https://stellarburgers.nomoreparties.site/register'
-login_page = 'https://stellarburgers.nomoreparties.site/login'
 main_page = 'https://stellarburgers.nomoreparties.site/'
-forgot_password_page = 'https://stellarburgers.nomoreparties.site/forgot-password'
+
+registration_page = main_page + 'register'
+login_page = main_page + 'login'
+forgot_password_page = main_page + 'forgot-password'
