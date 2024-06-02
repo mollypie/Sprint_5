@@ -1,18 +1,17 @@
 import random
 
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from conftest import driver
 from locators import *
 from url_adresses import *
 
 
 class TestRegistration:
 
-    def test_registration_correct_name_email_and_password_successful_registration(self):
-        driver = webdriver.Chrome()
+    def test_registration_correct_name_email_and_password_successful_registration(self, driver):
         driver.get(registration_page)
 
         driver.find_element(By.XPATH, REGISTRATION_NAME).send_keys('Анна')
@@ -26,10 +25,7 @@ class TestRegistration:
 
         assert 'login' in driver.current_url
 
-        driver.quit()
-
-    def test_registration_invalid_password_error_text(self):
-        driver = webdriver.Chrome()
+    def test_registration_invalid_password_error_text(self, driver):
         driver.get(registration_page)
 
         driver.find_element(By.XPATH, REGISTRATION_NAME).send_keys('Анна')
@@ -43,5 +39,3 @@ class TestRegistration:
                                                                                           PASSWORD_TEXT_ERROR)))
 
         assert driver.find_element(By.CLASS_NAME, PASSWORD_TEXT_ERROR).text == 'Некорректный пароль'
-
-        driver.quit()
